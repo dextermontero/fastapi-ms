@@ -59,3 +59,4 @@
     10.1: add .pre-commit-config.yaml on root
     10.2: type: pre-commit sample-config and copy the repos
     10.3: type: pre-commit run --all-files
+    10.4: type: pre-commit install
