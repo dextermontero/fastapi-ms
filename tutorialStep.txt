@@ -9,3 +9,43 @@
     3.1: type: git init
     3.2: Copy Python gitignore
     3.3: Add Scripts and Include on gitignore
+    3.4: Add Github Repository
+
+4: Make a new directory
+    4.1: Make a App directory
+    4.2: inside the app directory create a init python file and main file
+    4.3: Add requirements file inside the main directory
+    4.4: type: fastapi, uvicorn, gunicorn and jinja2
+
+5: Install the Python framework
+    5.1: type: pip install -r requirements.txt
+
+6: Initialize FastAPI on main.py
+    6.1: Open main.py and Copy and Paste the code below
+        from fastapi import FastAPI
+
+        app = FastAPI()
+
+        @app.get("/")
+        def root():
+            return {"Hello World"}
+    6.2: type: uvicorn app.main:app --reload
+
+7: Web Template
+    7.1: Inside the app folder create new templates folder
+    7.2: Inside the templates folder create a base.html and setup your html plugins
+    7.3: Create new index.html file
+    7.4: Open main.py and add new import
+         7.4.1: type: from fastapi.responses import HTMLResponse
+         7.4.2: like @app.get("/", response_class=HTMLResponse)
+    7.5: add Request in FastAPI
+        7.5.1: type: from fastapi import FastAPI, Request
+        7.5.2: like def root(request: Request):
+
+8: Jinja 
+    8.1: Import Jinj2template and pathlib
+    8.2: Setup Base directory
+        8.2.1: type: BASE_DIR = pathlib.Path(__file__).parent
+        8.2.2: type: templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
+    8.3: Change return into Jinja templates
+        8.3.1 Like templates.Jinja2Templates("filename", {"request": request})
