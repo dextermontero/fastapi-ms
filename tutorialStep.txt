@@ -1,0 +1,11 @@
+1: Setup Python Environment
+    type: python -m venv .
+
+2: Active the source
+    2.1: type: source Scripts/active
+    2.2: File > Save Workspace As
+
+3: Setup Git init
+    3.1: type: git init
+    3.2: Copy Python gitignore
+    3.3: Add Scripts and Include on gitignore
