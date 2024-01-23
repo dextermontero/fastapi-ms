@@ -1,7 +1,9 @@
 FROM python:3-12-slim
+
 COPY ./app /app
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./requirements.txt /requirements.txt
+
 RUN apt-get update && \
     apt-get install \
         build-essential \
@@ -14,5 +16,7 @@ RUN apt-get update && \
     && apt-get remove -y --purge make gcc build-essential \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
+
 RUN chmod +x entrypoint.sh
+
 CMD ["./entrypoint.sh"]
