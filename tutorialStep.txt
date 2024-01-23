@@ -60,3 +60,30 @@
     10.2: type: pre-commit sample-config and copy the repos
     10.3: type: pre-commit run --all-files
     10.4: type: pre-commit install
+    10.5: add runtime.txt and input specific python version to use
+
+11: Initialize Docker Container
+    11.1: Setup the entrypoint.sh bash
+    11.2: Setup the Dockerfile. inside the dockerfile copy and paste the script below
+        FROM python:3-12-slim
+
+        COPY ./app /app
+        COPY ./entrypoint.sh /entrypoint.sh
+        COPY ./requirements.txt /requirements.txt
+
+        RUN apt-get update && \
+            apt-get install \
+                build-essential \
+                python3-dev \
+                python3-setuptools \
+                tesseract-ocr \
+                make \
+                gcc \
+            && python3 -m pip install -r requirements.txt \
+            && apt-get remove -y --purge make gcc build-essential \
+            && apt-get autoremove -y \
+            && rm -rf /var/lib/apt/lists/*
+
+        RUN chmod +x entrypoint.sh
+
+        CMD ["./entrypoint.sh"]
